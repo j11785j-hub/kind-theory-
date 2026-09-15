@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>KIND THEORY — Shop</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0b0b0a;
+      color: #f1eadb;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAV */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 11, 10, 0.97);
+      border-bottom: 1px solid #292722;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 18px 6%;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover {
+      color: #c7a75b;
+    }
+
+    /* HEADER */
+
+    .shop-header {
+      text-align: center;
+      padding: 90px 20px 65px;
+
+      border-bottom: 1px solid #292722;
+
+      background:
+        radial-gradient(
+          circle at center,
+          #25231e 0%,
+          #0b0b0a 65%
+        );
+    }
+
+    .eyebrow {
+      color: #c7a75b;
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .shop-header h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(55px, 10vw, 110px);
+      line-height: .9;
+      text-transform: uppercase;
+    }
+
+    .shop-header p {
+      max-width: 600px;
+      margin: 25px auto 0;
+
+      color: #aaa396;
+
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* COLLECTION NAV */
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+
+      padding: 25px 20px;
+
+      border-bottom: 1px solid #292722;
+
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .categories a:hover {
+      color: #c7a75b;
+    }
+
+    /* PRODUCTS */
+
+    .products-section {
+      max-width: 1400px;
+      margin: auto;
+      padding: 70px 6%;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+
+      border-bottom: 1px solid #292722;
+    }
+
+    .section-title h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 36px;
+      text-transform: uppercase;
+    }
+
+    .section-title span {
+      color: #777268;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    /* PRODUCT CARD */
+
+    .product {
+      display: block;
+    }
+
+    .product-image {
+      aspect-ratio: 4 / 5;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle,
+          #302d26 0%,
+          #11110f 70%
+        );
+
+      border: 1px solid #292722;
+
+      transition: transform .3s ease;
+    }
+
+    .product:hover .product-image {
+      transform: translateY(-5px);
+    }
+
+    .product-image::after {
+      content: "KIND THEORY";
+
+      position: absolute;
+
+      color: rgba(199, 167, 91, .08);
+
+      font-family: Georgia, serif;
+      font-size: 55px;
+      font-weight: bold;
+
+      transform: rotate(-90deg);
+    }
+
+    .placeholder {
+      position: relative;
+      z-index: 2;
+
+      width: 48%;
+      height: 60%;
+
+      border: 2px solid #c7a75b;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-family: Georgia, serif;
+      font-size: 24px;
+
+      letter-spacing: 3px;
+
+      color: #c7a75b;
+    }
+
+    .product-info {
+      padding: 18px 3px 0;
+    }
+
+    .product-name {
+      font-family: Georgia, serif;
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+
+    .product-type {
+      color: #777268;
+
+      margin-top: 5px;
+
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .price {
+      margin-top: 10px;
+
+      color: #c7a75b;
+
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    /* BANNER */
+
+    .statement {
+      margin: 40px 0 0;
+
+      padding: 100px 20px;
+
+      text-align: center;
+
+      background: #11110f;
+
+      border-top: 1px solid #292722;
+      border-bottom: 1px solid #292722;
+    }
+
+    .statement h2 {
+      max-width: 900px;
+      margin: auto;
+
+      font-family: Georgia, serif;
+      font-size: clamp(35px, 6vw, 70px);
+
+      line-height: 1;
+
+      text-transform: uppercase;
+    }
+
+    .statement p {
+      max-width: 550px;
+      margin: 25px auto 0;
+
+      color: #aaa396;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 50px 6%;
+
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+
+      border-top: 1px solid #292722;
+    }
+
+    footer .logo {
+      color: #c7a75b;
+    }
+
+    footer p {
+      color: #777268;
+
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 750px) {
+
+      nav {
+        padding: 16px 5%;
+      }
+
+      .logo {
+        font-size: 16px;
+        letter-spacing: 3px;
+      }
+
+      .nav-links {
+        gap: 12px;
+        font-size: 8px;
+      }
+
+      .categories {
+        gap: 18px;
+        font-size: 8px;
+        overflow-x: auto;
+        justify-content: flex-start;
+        white-space: nowrap;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .product-name {
+        font-size: 15px;
+      }
+
+      .product-image {
+        aspect-ratio: 3 / 4;
+      }
+
+      .placeholder {
+        width: 55%;
+      }
+
+      .section-title h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+
+    <a href="index.html" class="logo">
+      KIND THEORY
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="products.html">Shop</a>
+    </div>
+
+  </nav>
+
+
+  <!-- SHOP HEADER -->
+
+  <header class="shop-header">
+
+    <div class="eyebrow">
+      KIND THEORY COLLECTION
+    </div>
+
+    <h1>
+      The<br>
+      Collection
+    </h1>
+
+    <p>
+      Art, ideas and clothing built to mean something.
+      Explore the first KIND THEORY collection.
+    </p>
+
+  </header>
+
+
+  <!-- CATEGORIES -->
+
+  <div class="categories">
+
+    <a href="#tees">T-Shirts</a>
+
+    <a href="#hoodies">Hoodies</a>
+
+    <a href="#hats">Hats</a>
+
+    <a href="#all">All Pieces</a>
+
+  </div>
+
+
+  <!-- PRODUCTS -->
+
+  <main class="products-section" id="all">
+
+    <!-- TEES -->
+
+    <div class="section-title" id="tees">
+
+      <h2>Tees</h2>
+
+      <span>Graphic Collection</span>
+
+    </div>
+
+
+    <div class="product-grid">
+
+
+      <a href="#" class="product">
+
+        <div class="product-image">
+
+          <div class="placeholder">
+            KT
+          </div>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-name">
+            Kind Theory I
+          </div>
+
+          <div class="product-type">
+            Graphic Tee
+          </div>
+
+          <div class="price">
+            $38
+          </div>
+
+        </div>
+
+      </a>
+
+
+      <a href="#" class="product">
+
+        <div class="product-image">
+
+          <div class="placeholder">
+            KT
+          </div>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-name">
+            Human Theory
+          </div>
+
+          <div class="product-type">
+            Graphic Tee
+          </div>
+
+          <div class="price">
+            $38
+          </div>
+
+        </div>
+
+      </a>
+
+
+      <a href="#" class="product">
+
+        <div class="product-image">
+
+          <div class="placeholder">
+            KT
+          </div>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-name">
+            Sacred Mind
+          </div>
+
+          <div class="product-type">
+            Graphic Tee
+          </div>
+
+          <div class="price">
+            $38
+          </div>
+
+        </div>
+
+      </a>
+
+    </div>
+
+
+    <!-- HOODIES -->
+
+    <div class="section-title" id="hoodies" style="margin-top:100px;">
+
+      <h2>Hoodies</h2>
+
+      <span>Heavyweight Collection</span>
+
+    </div>
+
+
+    <div class="product-grid">
+
+
+      <a href="#" class="product">
+
+        <div class="product-image">
+
+          <div class="placeholder">
+            KT
+          </div>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-name">
+            Theory Hoodie
+          </div>
+
+          <div class="product-type">
+            Heavyweight Hoodie
+          </div>
+
+          <div class="price">
+            $78
+          </div>
+
+        </div>
+
+      </a>
+
+
+      <a href="#" class="product">
+
+        <div class="product-image">
+
+          <div class="placeholder">
+            KT
+          </div>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-name">
+            Human Kind
+          </div>
+
+          <div class="product-type">
+            Heavyweight Hoodie
+          </div>
+
+          <div class="price">
+            $78
+          </div>
+
+        </div>
+
+      </a>
+
+
+      <a href="#" class="product">
+
+        <div class="product-image">
+
+          <div class="placeholder">
+            KT
+          </div>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-name">
+            The Original
+          </div>
+
+          <div class="product-type">
+            Heavyweight Hoodie
+          </div>
+
+          <div class="price">
+            $78
+          </div>
+
+        </div>
+
+      </a>
+
+    </div>
+
+
+    <!-- HATS -->
+
+    <div class="section-title" id="hats" style="margin-top:100px;">
+
+      <h2>Headwear</h2>
+
+      <span>KIND THEORY Hats</span>
+
+    </div>
+
+
+    <div class="product-grid">
+
+
+      <a href="#" class="product">
+
+        <div class="product-image">
+
+          <div class="placeholder">
+            KT
+          </div>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-name">
+            KT Signature
+          </div>
+
+          <div class="product-type">
+            Embroidered Hat
+          </div>
+
+          <div class="price">
+            $32
+          </div>
+
+        </div>
+
+      </a>
+
+
+      <a href="#" class="product">
+
+        <div class="product-image">
+
+          <div class="placeholder">
+            KT
+          </div>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-name">
+            Kind Theory
+          </div>
+
+          <div class="product-type">
+            Vintage Cap
+          </div>
+
+          <div class="price">
+            $32
+          </div>
+
+        </div>
+
+      </a>
+
+
+      <a href="#" class="product">
+
+        <div class="product-image">
+
+          <div class="placeholder">
+            KT
+          </div>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-name">
+            Theory Trucker
+          </div>
+
+          <div class="product-type">
+            Trucker Hat
+          </div>
+
+          <div class="price">
+            $34
+          </div>
+
+        </div>
+
+      </a>
+
+    </div>
+
+  </main>
+
+
+  <!-- BRAND STATEMENT -->
+
+  <section class="statement">
+
+    <h2>
+      Wear what matters.
+    </h2>
+
+    <p>
+      KIND THEORY is clothing with an idea behind it.
+      Individuality. Humanity. Kindness.
+    </p>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div>
+
+      <div class="logo">
+        KIND THEORY
+      </div>
+
+      <p>
+        WEAR WHAT MATTERS.
+      </p>
+
+    </div>
+
+    <p>
+      © 2026 KIND THEORY
+    </p>
+
+  </footer>
+
+</body>
+</html>
