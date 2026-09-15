@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KIND THEORY — Wear What Matters</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0a;
+      color: #f1eadb;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 11, 10, 0.96);
+      border-bottom: 1px solid #292722;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 6%;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover {
+      color: #c7a75b;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 78vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+      border-bottom: 1px solid #292722;
+      background:
+        radial-gradient(circle at center, #25231e 0%, #0b0b0a 58%);
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .eyebrow {
+      color: #c7a75b;
+      font-size: 11px;
+      letter-spacing: 5px;
+      font-weight: bold;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(58px, 12vw, 150px);
+      line-height: 0.85;
+      letter-spacing: -5px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: #c7a75b;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: 35px auto;
+      color: #bcb6a9;
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 16px 32px;
+      border: 1px solid #c7a75b;
+      color: #f1eadb;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      transition: 0.25s;
+    }
+
+    .button:hover {
+      background: #c7a75b;
+      color: #0b0b0a;
+    }
+
+    /* COLLECTION */
+
+    .section {
+      padding: 90px 6%;
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      margin-bottom: 45px;
+      border-bottom: 1px solid #292722;
+      padding-bottom: 20px;
+    }
+
+    .section-heading h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(35px, 5vw, 60px);
+      text-transform: uppercase;
+    }
+
+    .section-heading span {
+      color: #8e887b;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .collection {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .collection-card {
+      min-height: 420px;
+      display: flex;
+      align-items: end;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(145deg, #25231e, #11110f);
+      border: 1px solid #292722;
+    }
+
+    .collection-card::before {
+      content: "KT";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      font-family: Georgia, serif;
+      font-size: 150px;
+      font-weight: bold;
+      color: rgba(199, 167, 91, 0.08);
+    }
+
+    .collection-card h3 {
+      position: relative;
+      z-index: 2;
+      font-family: Georgia, serif;
+      font-size: 32px;
+      text-transform: uppercase;
+    }
+
+    .collection-card p {
+      position: relative;
+      z-index: 2;
+      color: #aaa396;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* MANIFESTO */
+
+    .manifesto {
+      border-top: 1px solid #292722;
+      border-bottom: 1px solid #292722;
+      text-align: center;
+      padding: 120px 20px;
+      background: #11110f;
+    }
+
+    .manifesto-small {
+      color: #c7a75b;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .manifesto h2 {
+      max-width: 950px;
+      margin: auto;
+      font-family: Georgia, serif;
+      font-size: clamp(38px, 6vw, 76px);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .manifesto p {
+      max-width: 650px;
+      margin: 30px auto 0;
+      color: #aaa396;
+    }
+
+    /* FEATURED */
+
+    .featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .featured-art {
+      min-height: 550px;
+      background:
+        radial-gradient(circle, #38342b 0%, #11110f 65%);
+      border: 1px solid #292722;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-art::before {
+      content: "KIND";
+      position: absolute;
+      font-family: Georgia, serif;
+      font-size: 130px;
+      font-weight: bold;
+      color: rgba(199, 167, 91, 0.08);
+      transform: rotate(-90deg);
+    }
+
+    .featured-copy .eyebrow {
+      margin-bottom: 15px;
+    }
+
+    .featured-copy h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(40px, 6vw, 75px);
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .featured-copy p {
+      color: #aaa396;
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid #292722;
+      padding: 50px 6%;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    footer .logo {
+      color: #c7a75b;
+    }
+
+    footer p {
+      color: #777268;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 750px) {
+
+      nav {
+        padding: 16px 5%;
+      }
+
+      .nav-links {
+        gap: 12px;
+        font-size: 9px;
+        letter-spacing: 1px;
+      }
+
+      .logo {
+        font-size: 17px;
+        letter-spacing: 3px;
+      }
+
+      .hero {
+        min-height: 72vh;
+      }
+
+      .hero h1 {
+        letter-spacing: -3px;
+      }
+
+      .collection {
+        grid-template-columns: 1fr;
+      }
+
+      .collection-card {
+        min-height: 300px;
+      }
+
+      .featured {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-art {
+        min-height: 400px;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .section-heading span {
+        display: block;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">KIND THEORY</a>
+
+    <div class="nav-links">
+      <a href="#collection">Shop</a>
+      <a href="#story">Story</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">A Different Kind of Clothing Company</div>
+
+        <h1>
+          KIND
+          <span>THEORY</span>
+        </h1>
+
+        <p>
+          Clothing built around the idea that what we put into the world matters.
+          Wear something with meaning.
+        </p>
+
+        <a href="products.html" class="button">Explore The Collection</a>
+      </div>
+    </section>
+
+
+    <section class="section" id="collection">
+
+      <div class="section-heading">
+        <h2>The Collection</h2>
+        <span>Built to Mean Something</span>
+      </div>
+
+      <div class="collection">
+
+        <a href="products.html" class="collection-card">
+          <div>
+            <p>01 — Everyday Statements</p>
+            <h3>Tees</h3>
+          </div>
+        </a>
+
+        <a href="products.html" class="collection-card">
+          <div>
+            <p>02 — Heavyweight Essentials</p>
+            <h3>Hoodies</h3>
+          </div>
+        </a>
+
+        <a href="products.html" class="collection-card">
+          <div>
+            <p>03 — The Finishing Piece</p>
+            <h3>Headwear</h3>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+
+    <section class="manifesto" id="story">
+
+      <div class="manifesto-small">The Kind Theory</div>
+
+      <h2>
+        What you wear can say something.
+      </h2>
+
+      <p>
+        KIND THEORY is built around art, individuality, and the belief
+        that kindness isn't weakness. It's a choice.
+      </p>
+
+    </section>
+
+
+    <section class="section">
+
+      <div class="featured">
+
+        <div class="featured-art">
+          <span></span>
+        </div>
+
+        <div class="featured-copy">
+
+          <div class="eyebrow">The First Collection</div>
+
+          <h2>
+            Wear<br>
+            What<br>
+            Matters.
+          </h2>
+
+          <p>
+            Vintage-inspired graphics. Detailed artwork. Premium streetwear.
+            Every piece is designed to carry an idea—not just a logo.
+          </p>
+
+          <a href="products.html" class="button">
+            Shop KIND THEORY
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer id="contact">
+
+    <div>
+      <div class="logo">KIND THEORY</div>
+      <p>Wear What Matters.</p>
+    </div>
+
+    <p>
+      © 2026 KIND THEORY. ALL RIGHTS RESERVED.
+    </p>
+
+  </footer>
+
+</body>
+</html>
